@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace AspNetCore6.Back.Migrations
+namespace AspNetCore6.Back.Persistance.Migrations
 {
     public partial class InitialCreate : Migration
     {
