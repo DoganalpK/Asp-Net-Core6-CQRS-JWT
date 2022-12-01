@@ -31,7 +31,7 @@ namespace AspNetCore6.Back.Persistance.Repositories
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task<T?> GetIdFilterAsync(Expression<Func<T, bool>> filter)
+        public async Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter)
         {
             return await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(filter);
         }

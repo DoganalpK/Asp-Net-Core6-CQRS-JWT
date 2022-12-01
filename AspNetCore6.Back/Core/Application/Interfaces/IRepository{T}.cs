@@ -7,7 +7,7 @@ namespace AspNetCore6.Back.Core.Application.Interfaces
     {
         Task<List<T>> GetAllAsync();
         Task<T?> GetByIdAsync(object id);
-        Task<T?> GetIdFilterAsync(Expression<Func<T, bool>> filter);
+        Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter);
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
