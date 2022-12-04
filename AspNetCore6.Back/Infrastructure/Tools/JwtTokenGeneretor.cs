@@ -18,16 +18,18 @@ namespace AspNetCore6.Back.Infrastructure.Tools
             claims.Add(new Claim(ClaimTypes.Name, dto.Username));
             claims.Add(new Claim(ClaimTypes.NameIdentifier, dto.Id.ToString()));
 
+            var expireDate = DateTime.UtcNow.AddDays(JwtTokenSettings.Expire);
+
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: JwtTokenSettings.ValidIssuer,
                 audience: JwtTokenSettings.ValidAudience,
                 claims: claims,
-                notBefore: DateTime.Now,
-                expires: DateTime.Now.AddDays(JwtTokenSettings.Expire),
+                notBefore: DateTime.UtcNow,
+                expires: expireDate,
                 signingCredentials: credentials
             );
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-            return new JwtTokenResponse(handler.WriteToken(token));
+            return new JwtTokenResponse(handler.WriteToken(token), expireDate);
         }
     }
 }
