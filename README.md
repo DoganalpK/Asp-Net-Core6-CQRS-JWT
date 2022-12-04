@@ -24,3 +24,5 @@ Asp-Net-Core-Advertisement-App
 - [x] .Net(6)
 - [x] CQRS
 - [x] JWT
+- [x] API
+- [x] CORS
