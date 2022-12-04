@@ -1,13 +1,18 @@
 ﻿using AspNetCore6.Back.Core.Application.Features.CQRS.Commands;
 using AspNetCore6.Back.Core.Application.Features.CQRS.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace AspNetCore6.Back.Controllers
 {
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -35,7 +40,7 @@ namespace AspNetCore6.Back.Controllers
         public async Task<IActionResult> Create(CreateCategoryCommandRequest request)
         {
             await _mediator.Send(request);
-            return Created(string.Empty,request);
+            return Created(string.Empty, request);
         }
 
         [HttpPut]

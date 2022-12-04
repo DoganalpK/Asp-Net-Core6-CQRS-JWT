@@ -1,14 +1,19 @@
 ﻿using AspNetCore6.Back.Core.Application.Features.CQRS.Commands;
 using AspNetCore6.Back.Core.Application.Features.CQRS.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using System.Data;
 
 namespace AspNetCore6.Back.Controllers
 {
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin,Member")]
     public class ProductsController : ControllerBase
     {
         private readonly IMediator _mediator;

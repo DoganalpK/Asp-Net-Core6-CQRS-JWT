@@ -31,6 +31,15 @@ builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 // AutoMapper Profiles
 builder.Services.AddAutoMapper(typeof(Program));
 
+//CORS Configuration
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("GlobalCORS", config =>
+    {
+        config.AllowAnyHeader().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 // JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
@@ -55,6 +64,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("GlobalCORS");
 app.UseAuthentication();
 app.UseAuthorization();
 
