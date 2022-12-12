@@ -20,7 +20,7 @@ Asp-Net-Core-Advertisement-App
 
 ## Languages & Tools
 
-- [x] Onion Rrchitecture
+- [x] Onion Architecture
 - [x] C#
 - [x] .Net(6)
 - [x] CQRS
