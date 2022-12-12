@@ -1,11 +1,3 @@
-
-Product App with .Net Core, CQRS and JWT
-
-<div id="top"></div>
-
-
-<!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <h3 align="center">Asp-Net-Core6-CQRS-and-JWT</h3>
 </div>
